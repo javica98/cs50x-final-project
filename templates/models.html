@@ -53,7 +53,13 @@
                     <td>{{ model.type }}</td>
                     <td>{{ model.created }}</td>
                     <td>
-                        <form action="/predict" method="get">
+                        {% if model.model_type == 'Classifier' %}
+                            <form action="/predict" method="get">
+                        {% elif model.model_type == 'Clustering' %}
+                            <form action="/predict_clustering" method="get">
+                        {% else %}
+                            <form action="/predict_regression" method="get">
+                        {% endif %}
                             <input type="hidden" name="model" value="{{ model.name }}">
                             <button class="btn">Use</button>
                         </form>

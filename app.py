@@ -190,7 +190,7 @@ def predict_clustering():
         return send_file(io.BytesIO(output.getvalue().encode()),
                          mimetype='text/csv',
                          as_attachment=True,
-                         download_name='clusters.csv')
+                         download_name='clusteringResults.csv')
 
     # GET request: render prediction page
     return render_template("predict_clustering.html", models=av_models)
@@ -308,12 +308,20 @@ def predict_regression():
 
         # Make predictions on input data
         predictions = model.predict(df)
+        df['regression'] = predictions
 
-        # Return predictions as list to render in template
-        return render_template("predict_result_regression.html", predictions=predictions.tolist())
+        # Create downloadable CSV with predictions
+        output = io.StringIO()
+        df.to_csv(output, index=False)
+        output.seek(0)
+        return send_file(io.BytesIO(output.getvalue().encode()),
+                         mimetype='text/csv',
+                         as_attachment=True,
+                         download_name='regressionResults.csv')
 
-    # GET request: render prediction form
+    # GET request: render prediction page
     return render_template("predict_regression.html", models=model_files)
+
 ## TRAIN CLASSIFIER
 @app.route('/train', methods=['GET', 'POST'])
 def train():
@@ -484,7 +492,7 @@ def predict():
             io.BytesIO(output.getvalue().encode()),
             mimetype='text/csv',
             as_attachment=True,
-            download_name='predicciones.csv'
+            download_name='classifierResults.csv'
         )
 
     # GET: show prediction page with available models
@@ -579,3 +587,4 @@ def model_detail(filename):
 # Run the Flask app
 if __name__ == '__main__':
     app.run(debug=True)
+

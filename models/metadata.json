@@ -1,11 +1,11 @@
 [
   {
-    "filename": "KNN_fb6a056d-84c9-4254-b0de-3a165bfe9bd3.joblib",
-    "name": "Name1",
-    "description": "1",
+    "filename": "KNN_244c9999-bec0-48ec-b262-79cc33c05686.joblib",
+    "name": "Example 1",
+    "description": "Example desc 1",
     "model_type": "Classifier",
     "type": "KNN",
-    "created": "2025-07-08 17:43:10",
+    "created": "2025-07-09 17:23:31",
     "accuracy": 1.0,
     "precision": 1.0,
     "recall": 1.0,
@@ -53,14 +53,14 @@
     }
   },
   {
-    "filename": "Name1Reg.pkl",
-    "name": "Name1Reg",
-    "description": "a",
+    "filename": "Example 2.pkl",
+    "name": "Example 2",
+    "description": "Example desc 2",
     "model_type": "Regression",
-    "type": "RandomForestRegressor",
-    "created": "2025-07-08 17:53:56",
-    "mse": 592645000.0,
-    "r2_score": -0.4816,
+    "type": "LinearRegression",
+    "created": "2025-07-09 17:24:14",
+    "mse": 440320640.0221,
+    "r2_score": -0.1008,
     "features": [
       "metros_cuadrados",
       "habitaciones",
@@ -68,20 +68,5 @@
     ],
     "train_size": 8,
     "test_size": 2
-  },
-  {
-    "filename": "Name1Clus.pkl",
-    "name": "Name1Clus",
-    "description": "",
-    "model_type": "Clustering",
-    "type": "KMeans",
-    "created": "2025-07-08 20:55:08",
-    "features": [
-      "metros_cuadrados",
-      "habitaciones",
-      "antiguedad",
-      "precio"
-    ],
-    "n_clusters": 8
   }
 ]
