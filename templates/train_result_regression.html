@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Training Result</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <header class="navbar">
+        <div class="nav-left">
+            <img src="{{ url_for('static', filename='img/logo.png') }}" alt="Logo" class="logo">
+            <span class="nav-title">CS50x ML App</span>
+        </div>
+        <div class="nav-toggle" id="navToggle">☰</div>
+
+        <!-- Navigation Links -->
+        <nav class="nav-links" id="navLinks">
+            <a href="{{ url_for('index') }}" class="btn">Home</a> <!-- Translated -->
+            <a href="{{ url_for('list_models') }}" class="btn">Models List</a>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-container">
+
+        <!-- Informational Panel -->
+        <section class="info-panel">
+            <h3>REGRESSION MODELS</h3>
+            <img src="{{ url_for('static', filename='img/regression_example.png') }}" alt="Example regression" class="info-image">
+            <p>Regression models are used to predict continuous values. These models learn from labeled datasets where the target is a numerical variable (e.g., price, temperature, age). Common models include Linear Regression, Decision Tree Regressor, and Random Forest Regressor.</p>
+            <p>Input Requirements:</p>
+            <ul>
+                <li>A CSV file with a numeric target column.</li>
+                <li>All input features should be numerical and without missing values.</li>
+                <li>The target column must be selected when training.</li>
+            </ul>
+        </section>
+
+        <!-- Results Panel -->
+        <section class="form-panel">
+            <h2>Regression Model Trained Successfully</h2>
+
+            <p><strong>Name:</strong> {{ model_name }}</p>
+            <p><strong>Description:</strong> {{ model_description }}</p>
+            <p><strong>Mean Squared Error (MSE):</strong> {{ mse }}</p>
+            <p><strong>R-squared (R²):</strong> {{ r2 }}</p>
+            <p><strong>Model saved as:</strong> {{ model_filename }}</p>
+            <p><strong>Used features:</strong> {{ features }}</p>
+            <p><strong>Training dataset size:</strong> {{ train_size }}</p>
+            <p><strong>Test dataset size:</strong> {{ test_size }}</p>
+
+            <div style="margin-top: 1rem;">
+                <a href="{{ url_for('train_regression') }}" class="btn">Train Again</a>
+                <a href="/" class="btn">Home</a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        CS50 · Flask + Scikit-learn · 2025
+    </footer>
+
+    <!-- Mobile Menu JavaScript -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const toggle = document.getElementById("navToggle");
+            const links = document.getElementById("navLinks");
+
+            toggle.addEventListener("click", function () {
+                links.classList.toggle("show");
+            });
+        });
+    </script>
+
+</body>
+</html>

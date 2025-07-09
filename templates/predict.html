@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Prediction</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <header class="navbar">
+        <div class="nav-left">
+            <img src="{{ url_for('static', filename='img/logo.png') }}" alt="Logo" class="logo">
+            <span class="nav-title">CS50x ML App</span>
+        </div>
+
+        <div class="nav-toggle" id="navToggle">☰</div>
+
+        <!-- Navigation links -->
+        <nav class="nav-links" id="navLinks">
+            <a href="{{ url_for('index') }}" class="btn">Home</a>
+            <a href="{{ url_for('list_models') }}" class="btn">Models List</a>
+        </nav>
+    </header>
+
+    <!-- Main container -->
+    <main class="main-container">
+
+        <!-- Informational Panel -->
+        <section class="info-panel">
+            <h3>CLASSIFIER MODELS</h3>
+            <img src="{{ url_for('static', filename='img/classifier_example.png') }}" alt="Example classifier" class="info-image">
+            <p>Classifier models are used to categorize data into predefined classes or labels. These models learn from labeled datasets, where the target (output) is a categorical variable (e.g., "spam" vs "not spam", "setosa", "versicolor", "virginica"). Examples include K-Nearest Neighbors, Decision Trees, and Logistic Regression.</p>
+            <p>Input Requirements:</p>
+            <ul>
+                <li>A CSV file with at least one target column (categorical).</li>
+                <li>All input features should be numerical (non-numerical must be preprocessed).</li>
+                <li>The name of the target column must be specified in the form.</li>
+            </ul>
+        </section>
+
+        <!-- Form Panel -->
+        <section class="form-panel">
+            <h2>Make a prediction</h2>
+            <form method="POST" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="file">CSV file:</label>
+                    <input type="file" name="file" id="file" accept=".csv" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="model">Select a trained model:</label>
+                    <select name="model" id="model" required>
+                        {% for model in models %}
+                            <option value="{{ model }}">{{ model }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <button type="submit" class="btn">Predict</button> 
+            </form>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        CS50 · Flask + Scikit-learn · 2025
+    </footer>
+
+    <!-- Mobile menu toggle script -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const toggle = document.getElementById("navToggle");
+            const links = document.getElementById("navLinks");
+            toggle.addEventListener("click", function () {
+                links.classList.toggle("show");
+            });
+        });
+    </script>
+
+</body>
+</html>

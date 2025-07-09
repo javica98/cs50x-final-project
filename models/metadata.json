@@ -1,0 +1,87 @@
+[
+  {
+    "filename": "KNN_fb6a056d-84c9-4254-b0de-3a165bfe9bd3.joblib",
+    "name": "Name1",
+    "description": "1",
+    "model_type": "Classifier",
+    "type": "KNN",
+    "created": "2025-07-08 17:43:10",
+    "accuracy": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1_score": 1.0,
+    "features": [
+      "sepal_length",
+      "sepal_width",
+      "petal_length",
+      "petal_width"
+    ],
+    "train_size": 120,
+    "test_size": 30,
+    "report": {
+      "setosa": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1-score": 1.0,
+        "support": 10.0
+      },
+      "versicolor": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1-score": 1.0,
+        "support": 9.0
+      },
+      "virginica": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1-score": 1.0,
+        "support": 11.0
+      },
+      "accuracy": 1.0,
+      "macro avg": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1-score": 1.0,
+        "support": 30.0
+      },
+      "weighted avg": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1-score": 1.0,
+        "support": 30.0
+      }
+    }
+  },
+  {
+    "filename": "Name1Reg.pkl",
+    "name": "Name1Reg",
+    "description": "a",
+    "model_type": "Regression",
+    "type": "RandomForestRegressor",
+    "created": "2025-07-08 17:53:56",
+    "mse": 592645000.0,
+    "r2_score": -0.4816,
+    "features": [
+      "metros_cuadrados",
+      "habitaciones",
+      "antiguedad"
+    ],
+    "train_size": 8,
+    "test_size": 2
+  },
+  {
+    "filename": "Name1Clus.pkl",
+    "name": "Name1Clus",
+    "description": "",
+    "model_type": "Clustering",
+    "type": "KMeans",
+    "created": "2025-07-08 20:55:08",
+    "features": [
+      "metros_cuadrados",
+      "habitaciones",
+      "antiguedad",
+      "precio"
+    ],
+    "n_clusters": 8
+  }
+]

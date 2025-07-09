@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Modelos guardados</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <header class="navbar">
+        <div class="nav-left">
+            <img src="{{ url_for('static', filename='img/logo.png') }}" alt="Logo" class="logo">
+            <span class="nav-title">CS50x ML App</span>
+        </div>
+        <div class="nav-toggle" id="navToggle">☰</div>
+
+        <!-- Navigation links -->
+        <nav class="nav-links" id="navLinks">
+            <a href="{{ url_for('index') }}" class="btn">Index</a>
+            <a href="{{ url_for('list_models') }}" class="btn">Models List</a>
+        </nav>
+    </header>
+
+    <h1>Trained models</h1>
+
+    {% if models %}
+        <!-- Filter tabs -->
+        <div class="tabs" id="modelTabs">
+            <button class="tab active" data-type="Classifier">Classifier</button>
+            <button class="tab" data-type="Regression">Regression</button>
+            <button class="tab" data-type="Clustering">Clustering</button>
+            <button class="tab" data-type="All">All</button>
+        </div>
+
+        <!-- Table of models -->
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Type</th>
+                    <th>Date</th>
+                    <th>Actions</th>
+                    <th>Details</th>
+                </tr>
+            </thead>
+            <tbody id="modelsTableBody">
+                {% for model in models %}
+                <tr data-model-type="{{ model.model_type }}">
+                    <td>{{ model.name }}</td>
+                    <td>{{ model.description }}</td>
+                    <td>{{ model.type }}</td>
+                    <td>{{ model.created }}</td>
+                    <td>
+                        <form action="/predict" method="get">
+                            <input type="hidden" name="model" value="{{ model.name }}">
+                            <button class="btn">Use</button>
+                        </form>
+                    </td>
+                    <td>
+                        <form action="{{ url_for('model_detail', filename=model.filename) }}" method="get">
+                            <button type="submit" class="btn">Details</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>No trained model</p>
+    {% endif %}
+<!-- Filtering Logic in JavaScript -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const tabs = document.querySelectorAll('.tab');
+            const rows = document.querySelectorAll('#modelsTableBody tr');
+
+            function filterModels(type) {
+                rows.forEach(row => {
+                    const modelType = row.getAttribute('data-model-type');
+                    if (type === 'All' || modelType === type) {
+                        row.style.display = '';
+                    } else {
+                        row.style.display = 'none';
+                    }
+                });
+            }
+
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    tabs.forEach(t => t.classList.remove('active'));
+                    tab.classList.add('active');
+                    filterModels(tab.getAttribute('data-type'));
+                });
+            });
+
+            // Show only classifiers by default
+            filterModels('Classifier');
+        });
+    </script>
+
+    <!--  Nav Toggle -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const toggle = document.getElementById("navToggle");
+            const links = document.getElementById("navLinks");
+
+            toggle.addEventListener("click", function () {
+                links.classList.toggle("show");
+            });
+        });
+    </script>
+</body>
+</html>

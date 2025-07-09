@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Training Result</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <header class="navbar">
+        <div class="nav-left">
+            <img src="{{ url_for('static', filename='img/logo.png') }}" alt="Logo" class="logo">
+            <span class="nav-title">CS50x ML App</span>
+        </div>
+        <div class="nav-toggle" id="navToggle">☰</div>
+
+        <!-- Navigation Links -->
+        <nav class="nav-links" id="navLinks">
+            <a href="{{ url_for('index') }}" class="btn">Home</a> <!-- Translated -->
+            <a href="{{ url_for('list_models') }}" class="btn">Models List</a>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-container">
+
+        <section class="info-panel">
+            <h3>CLUSTERING MODELS</h3>
+            <img src="{{ url_for('static', filename='img/cluster_example.png') }}" alt="Example cluster" class="info-image">
+            <p>Clustering models are used for unsupervised learning, meaning they group similar data points together without needing a target label. They are useful for data exploration, pattern discovery, and segmentation. Common algorithms include K-Means and DBSCAN.</p>
+            <p>Input Requirements:</p>
+            <ul>
+                <li>A CSV file without a target column.</li>
+                <li>All input features should be numerical.</li>
+                <li>The number of clusters may be predefined (e.g., for K-Means) or determined automatically (e.g., by DBSCAN).</li>
+            </ul>
+        </section>
+
+        <!-- Results Panel -->
+        <section class="form-panel">
+            <h2>Clustering Trained Successfully</h2>
+            <p><strong>Name:</strong> {{ model_name }}</p>
+            <p><strong>Description:</strong> {{ model_description }}</p>
+            <p><strong>Model saved as:</strong> {{ model_filename }}</p>
+            <p><strong>Used features:</strong> {{ features }}</p>
+            {% if n_clusters >= 0 %}
+                <p><strong>Number of clusters:</strong> {{ n_clusters }}</p>
+            {% endif %}
+            <div style="margin-top: 1rem">
+                <a href="{{ url_for('train_clustering') }}" class="btn">Train Again</a>
+                <a href="/" class="btn">Home</a> 
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        CS50 · Flask + Scikit-learn · 2025
+    </footer>
+
+    <!-- Mobile Menu JavaScript -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const toggle = document.getElementById("navToggle");
+            const links = document.getElementById("navLinks");
+
+            toggle.addEventListener("click", function () {
+                links.classList.toggle("show");
+            });
+        });
+    </script>
+
+</body>
+</html>

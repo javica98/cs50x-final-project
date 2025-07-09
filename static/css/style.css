@@ -1,0 +1,288 @@
+/* === NAVBAR STYLES === */
+.navbar {
+    width: 100%;
+    background-color: #2c3e50;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.5rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    flex-wrap: wrap;
+    box-sizing: border-box;
+}
+
+.nav-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+}
+
+.nav-title {
+    color: #ecf0f1;
+    font-size: 1.4rem;
+    font-weight: bold;
+}
+
+.nav-links {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.btn {
+    background-color: #3498db;
+    color: white;
+    padding: 10px 16px;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    transition: background 0.3s ease;
+    white-space: nowrap;
+    border: none;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: #2980b9;
+}
+
+.nav-toggle {
+    display: none;
+    font-size: 1.8rem;
+    color: white;
+    cursor: pointer;
+}
+
+/* === MAIN CONTENT === */
+main {
+    padding-top: 110px;
+    width: 90%;
+    margin: 0 auto;
+}
+
+/* Container for both panels */
+.main-container {
+    display: flex;
+    gap: 2rem;
+    align-items: flex-start;
+    justify-content: center;
+    margin-top: 2rem;
+    flex-wrap: wrap;
+}
+
+/* Panels */
+.info-panel, .form-panel {
+    background: #fff;
+    border: 2px solid #d6eaf8;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    flex: 1 1 45%;
+    box-sizing: border-box;
+    min-width: 300px;
+}
+
+/* Images */
+.info-image {
+    width: 100%;
+    height: auto;
+    margin: 1rem 0;
+    border-radius: 4px;
+}
+
+/* Footer */
+footer {
+    margin-top: 40px;
+    text-align: center;
+    color: #777;
+    font-size: 0.9rem;
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 768px) {
+    .nav-toggle {
+        display: block;
+    }
+
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background-color: #2c3e50;
+        text-align: center;
+        padding: 1rem 0;
+        margin-top: 1rem;
+        gap: 0;
+    }
+
+    .nav-links.show {
+        display: flex;
+    }
+
+    .btn {
+        width: 90%;
+        max-width: 300px;
+        margin: 0.5rem auto;
+        text-align: center;
+        white-space: normal;
+    }
+
+    .main-container {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    .info-panel, .form-panel {
+        max-width: 100%;
+    }
+}
+
+/* === MODERN FORM STYLE === */
+.form-panel {
+    max-width: 500px;
+    width: 100%;       
+    box-sizing: border-box;
+}
+
+.form-panel form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin: 0;
+    padding: 0;
+}
+
+.form-panel label {
+    font-weight: 600;
+    margin-bottom: 0.3rem;
+    display: block;
+}
+
+.form-panel input[type="text"],
+.form-panel input[type="file"],
+.form-panel select,
+.form-panel textarea {
+    width: 100%;
+    padding: 0.5rem 0.6rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease;
+}
+
+.form-panel input[type="text"]:focus,
+.form-panel input[type="file"]:focus,
+.form-panel select:focus,
+.form-panel textarea:focus {
+    outline: none;
+    border-color: #3498db;
+    box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
+}
+
+.form-panel button.btn {
+    width: auto;
+    padding: 0.6rem 2rem;
+    font-size: 1rem;
+    align-self: center;
+    cursor: pointer;
+    margin-top: 1rem;
+}
+
+/* === HOME PANELS (index.html) === */
+.home-panels {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    gap: 2rem;
+    margin-top: 2rem;
+    flex-wrap: wrap;
+}
+
+.home-card {
+    flex: 1 1 250px;
+    max-width: 300px;
+    background: #fff;
+    border: 2px solid #d6eaf8;
+    padding: 1.5rem;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.home-card h3 {
+    margin-top: 0;
+    color: #2c3e50;
+}
+
+.home-card p {
+    color: #555;
+    margin: 1rem 0;
+}
+
+.home-card .btn {
+    margin-top: 1rem;
+}
+
+/* Responsive behavior */
+@media (max-width: 768px) {
+    .home-panels {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .home-card {
+        width: 90%;
+    }
+}
+
+/* === TABS FOR FILTERING === */
+.tabs {
+    display: flex;
+    gap: 1rem;
+    margin: 1rem 0 1.5rem 0;
+}
+
+.tab {
+    padding: 0.6rem 1.2rem;
+    border-radius: 4px;
+    background-color: #3498db;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    user-select: none;
+    transition: background-color 0.3s ease;
+    border: none;
+}
+
+.tab:hover {
+    background-color: #2980b9;
+}
+
+.tab.active {
+    background-color: #2c3e50;
+}
+
+/* === TABLE STYLES === */
+table {
+    border-collapse: collapse;
+    width: 100%;
+    max-width: 100%;
+}
+
+th, td {
+    border: 1px solid #ccc;
+    padding: 0.6rem 1rem;
+    text-align: left;
+}
