@@ -1,5 +1,5 @@
 # CS50x: ML Final Project
-#### Video Demo:
+#### Video Demo: https://youtu.be/JGpWq7b2HCs
 #### Description:
 
 # 🧠 Flask ML Model Trainer
